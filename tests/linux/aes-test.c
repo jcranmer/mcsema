@@ -112,8 +112,10 @@ int aes128_self_test(void){
 #define STR4 "%02hhx %02hhx %02hhx %02hhx"
 #define PRINT_HEX(s) \
     printf(STR4 " " STR4 "  " STR4 " " STR4 "\n", \
-        s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7], \
+        s[0], s[1], s[2], s[3], s[4], s[5], s[6], s[7]); \
+    printf(STR4 " " STR4 "\n", \
         s[8], s[9], s[10], s[11], s[12], s[13], s[14], s[15])
+
     aes128_dec(cipher,computed_plain);
     PRINT_HEX(computed_cipher);
     PRINT_HEX(computed_plain);

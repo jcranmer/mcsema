@@ -223,6 +223,7 @@ static InstTransResult LiftInstIntoBlockImpl(TranslationContext &ctx,
     // In the case that we can't find the opcode, try building it out with
     // inline assembly calls in LLVM instead.
     ArchBuildInlineAsm(inst, block);
+    std::cerr << "Added inline assembly for above opcode" << std::endl;
     return itr;
   }
   return itr;
