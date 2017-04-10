@@ -219,7 +219,11 @@ static InstTransResult LiftInstIntoBlockImpl(TranslationContext &ctx,
     std::cerr << "Error translating instruction at " << std::hex
               << ctx.natI->get_loc() << "; unsupported opcode " << std::dec
               << opcode << std::endl;
-    return TranslateErrorUnsupported;
+
+    // In the case that we can't find the opcode, try building it out with
+    // inline assembly calls in LLVM instead.
+    ArchBuildInlineAsm(inst, block);
+    return itr;
   }
   return itr;
 }

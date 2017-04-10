@@ -235,6 +235,12 @@ class LinuxTest(unittest.TestCase):
             self._compileBitcode(arch, bcfile, elffile, buildargs)
             self._checkInputs(arch, testname, elffile)
 
+    def testInlineAsm(self):
+        # The x86 test is producing slightly diferent output for printf
+        # reasons, so disable it for now.
+        #self._runX86Test("aes-test")
+        self._runAMD64Test("aes-test")
+
     def testHello(self):
         self._runX86Test("hello")
         self._runAMD64Test("hello")
